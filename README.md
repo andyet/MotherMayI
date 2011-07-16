@@ -14,7 +14,7 @@ The code itself is actually pretty well documented inline, but since you're lazy
 
 ## Running the tests
 
-**WARNING** The tests are destructive. You'll need to edit the testconfig.json to specify a db and enable the tests before running. You should not be able to run the tests without editing this file first.
+**WARNING** The tests are destructive (it flushes the configured Redis db). You'll need to edit the testconfig.json to specify a db and enable the tests before running. You should not be able to run the tests without editing this file first.
 
     node testall.js
 
