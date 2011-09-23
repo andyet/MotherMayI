@@ -146,6 +146,24 @@ MotherMayI.prototype = new (function() {
     };
 
     /*
+     * Check access for several queries. If one of them
+     * comes back true, then the callback will get true.
+     *
+     * @param query: [{
+     *      who: group/user slug like group:workteam user:bill or your own
+     *      schema.
+     *      what: action like edit, delete, publish, kill, boil, whatever
+     *      whom: object that you would like to do the action to.
+     *      }]
+     */
+    this.checkMany = function(queries, callback) {
+        var bc = new BoolCollector(queries.length, callback);
+        queries.forEach(function(query, idx) {
+            this.may(query.who, query.what, query.whom, bc.set.bind(bc));
+        }.bind(this));
+    };
+
+    /*
      * Disconnect from Redis.
      */
     this.quit = function() {
