@@ -14,7 +14,7 @@ The code itself is actually pretty well documented inline, but since you're lazy
 
 ## Running the tests
 
-**WARNING** The tests are destructive. You'll need to edit the testconfig.json to specify a db and enable the tests before running. You should not be able to run the tests without editing this file first.
+**WARNING** The tests are destructive (it flushes the configured Redis db). You'll need to edit the testconfig.json to specify a db and enable the tests before running. You should not be able to run the tests without editing this file first.
 
     node testall.js
 
@@ -66,3 +66,24 @@ Since you might have users, groups, teams, etc, it is nice to be able to check t
 
     mayi.disconnect();
     
+## License
+
+Written by Nathan Fritz. Copyright © 2011 by &yet, LLC. Released under the
+terms of the MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
