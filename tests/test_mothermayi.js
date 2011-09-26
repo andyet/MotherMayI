@@ -1,5 +1,5 @@
 var TestObject = require("./testcore").TestObject,
-    MotherMayI = require('../mothermayi').MotherMayI;
+    MotherMayI = require('../mothermayi');
 
 var tests = new TestObject([
     'grant_Beatrix_kill_Bill',
@@ -12,7 +12,7 @@ var tests = new TestObject([
 ], 'MotherMayI', function(config) {
     var mayi = new MotherMayI(config.host, config.port, config.db);
     mayi.redis.flushdb();
-    mayi.grant('group:Hobbits', 'wear', 'TheOneRing');
+    mayi.grant('group:Hobbits', ['wear', 'give'], 'TheOneRing');
     mayi.grant('user:Smeagul', 'wear', 'TheOneRing', function() {
         mayi.mayThey(['user:Bilbo', 'group:Hobbits'], 'wear', 'TheOneRing', function(may) {
             if(may) {

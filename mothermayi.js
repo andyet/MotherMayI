@@ -100,15 +100,20 @@ MotherMayI.prototype = new (function() {
      *  @param whom: object that you would like to do the action to.
      */
     this.grant = function(who, what, whom, callback) {
-        this.redis.sadd('acl::' + what + '::' + whom, who, function(err, reply) {
-            if(callback != undefined) {
-                if(!err) {
-                    callback(true);
-                } else {
-                    callback(false);
-                }
-            }
-        });
+        var whats = (what instanceof Array) ? what : [what],
+            i = 0,
+            len = whats.length,
+            error = false,
+            counter = 0;
+        
+        for (;i < len; i ++) {
+            this.redis.sadd('acl::' + whats[i] + '::' + whom, who, function(err, reply) {
+                counter ++;
+                console.log('looped', counter, len, !!callback, err);
+                if (err) error = true;
+                if (counter === len && callback) callback(error);
+            });
+        }
     };
 
     /*
@@ -175,4 +180,4 @@ MotherMayI.prototype = new (function() {
 
 });
 
-exports.MotherMayI = MotherMayI;
+module.exports = MotherMayI;
