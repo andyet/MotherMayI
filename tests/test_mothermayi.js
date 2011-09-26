@@ -10,7 +10,7 @@ var tests = new TestObject([
     'GandalfCannot',
     'SmeagulCan',
 ], 'MotherMayI', function(config) {
-    var mayi = new MotherMayI(config.host, config.port, config.db);
+    var mayi = MotherMayI.createClient(config.host, config.port, config.db);
     mayi.redis.flushdb();
     mayi.grant('group:Hobbits', ['wear', 'give'], 'TheOneRing');
     mayi.grant('user:Smeagul', 'wear', 'TheOneRing', function() {

@@ -179,4 +179,9 @@ MotherMayI.prototype = new (function() {
 
 });
 
-module.exports = MotherMayI;
+module.exports = {
+    MotherMayI: MotherMayI,
+    createClient: function (host, port, db) {
+        return new MotherMayI(host, port, db);
+    }
+}
