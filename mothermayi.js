@@ -109,9 +109,8 @@ MotherMayI.prototype = new (function() {
         for (;i < len; i ++) {
             this.redis.sadd('acl::' + whats[i] + '::' + whom, who, function(err, reply) {
                 counter ++;
-                console.log('looped', counter, len, !!callback, err);
                 if (err) error = true;
-                if (counter === len && callback) callback(error);
+                if (counter === len && callback) callback(!error);
             });
         }
     };
